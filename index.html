@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Angular DataTable using HTTP Service with Bootstrap and Jquery Combinations</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+</head>
+<body ng-app="datatablesSampleApp">
+	<div class="container">
+	<div class="jumbotron text-center alert-success">
+  		<h2>Angular JS + Angular Datatable + HTTP Service + Bootstrap + JQuery</h2>
+	</div><!-- End of jumbotron -->	
+    <div ng-controller="simpleCtrl" class="code">
+        <div class="panel panel-default">
+  			<div class="panel-heading text-center">
+  				<h3><b>API RESPONSE AS JSON</b></h3>
+  				<p>API Used: <a href="https://jsonplaceholder.typicode.com/users" target="_blank">https://jsonplaceholder.typicode.com/users</a></p>
+  			</div><!-- End of panel-heading -->
+  			<div class="panel-body">{{persons}}</div>
+		</div><!-- End of panel-default -->
+        <br><br><br>
+        <div class="well text-center">
+        	<h3><b>API RESPONSE AS TABLE FORMAT</b></h3>
+        	<p>API Used: <a href="https://jsonplaceholder.typicode.com/users" target="_blank">https://jsonplaceholder.typicode.com/users</a></p>
+        </div><!-- End of .well -->
+        <table datatable="ng" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Website</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr dt-rows ng-repeat="person in persons">
+	                <td>{{ $index+1 }}</td>
+	                <td>{{ person.name }}</td>
+	                <td>{{ person.username }}</td>
+	                <td>{{ person.email }}</td>
+	                <td>{{ person.phone }}</td>
+	                <td>{{ person.website }}</td>
+                </tr>
+            </tbody>
+        </table><!-- End of Table -->
+        <br><br><br>
+    </div><!-- End of .code -->
+	</div><!-- End of Container -->
+    <script src="js/jquery-1.10.1.min.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/angular.js"></script>
+    <script src="js/angular-datatables.js"></script>
+	<script src="js/angular-datatables.directive.js"></script>
+	<script src="js/angular-datatables.factory.js"></script>
+	<script src="js/angular-datatables.bootstrap.js"></script>
+</body>
+<script>
+	(function(angular) {
+    'use strict';
+    angular.module('datatablesSampleApp', ['datatables']).
+    controller('simpleCtrl', function($scope, $http) {
+    	$http.get("https://jsonplaceholder.typicode.com/users")
+    	.then(function(response) {
+        	$scope.persons = response.data;
+    	});
+    });
+})(angular);
+</script>
+</html>
