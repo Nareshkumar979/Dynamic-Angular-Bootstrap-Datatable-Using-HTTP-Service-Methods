@@ -26,13 +26,13 @@ angular.module('datatablesSampleApp', ['datatables'])
 ##  List of Available Advanced table options for Angular Data Table
 For advanced datatable options have a look at items listed below. 
 
-- **Table Pagination - **
+-**Table Pagination-**
 Angular Bootstrap Table Pagination is a component with simple navigation which lets you split a huge amount of content within the tables into smaller parts. By default, pagination is initialized with Previous, page numbers and Next buttons. 
 
-- **Table Search - **
+-**Table Search-**
 Angular Bootstrap table search are a component which are super fast and easy to use searching functionality dedicated to our tables.
 
-- **Table Sort - **
+-**Table Sort - **
 Angular Bootstrap Sort table are component with sorting functionality which lets you sort the data of the tables according to any specific columns.
 
 - **Table Editable - **
